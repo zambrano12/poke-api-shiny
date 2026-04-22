@@ -26,11 +26,11 @@ const container = document.getElementById('characters-list');
 async function fetchCharacters() {
     if (!nextUrl) return;
 
-    // Opcional: Referencia al botón para cambiar el texto mientras carga
+   
     const btnLoad = document.getElementById('load-more');
     if (btnLoad) {
         btnLoad.disabled = true;
-        btnLoad.innerText = 'Buscando Pokémon... ✨';
+        btnLoad.innerText = 'Buscando Pokémon...chambranito';
     }
 
     try {
@@ -49,7 +49,7 @@ async function fetchCharacters() {
 
             const imageShiny = pokemon.sprites.other['official-artwork'].front_shiny;
 
-            // 2. Traducir los tipos usando el diccionario
+           
             const tiposTraducidos = pokemon.types.map(t => {
                 const nombreIngles = t.type.name;
                 return tiposEspanol[nombreIngles] || nombreIngles;
@@ -89,5 +89,5 @@ async function fetchCharacters() {
     }
 }
 
-// Carga inicial
+
 fetchCharacters();
