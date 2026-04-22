@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon Ball API - Interfaz</title>
+    <title>PokéAPI Shiny</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
     <header>
-        <h1>Dragon Ball personajes</h1>
+        <h1>Pokémon Shiny Collection ✨</h1>
     </header>
 
     <main>
-        <div id="characters-list" class="characters-container">
-            </div>
+        <div id="characters-list" class="characters-container"></div>
+        
+        <div style="text-align: center; padding: 40px;">
+            <button type="button" id="load-more" onclick="fetchCharacters()" class="btn-load"> MÁS POKEMONES
+            </button>
+        </div>
     </main>
 
     <script src="script.js"></script>

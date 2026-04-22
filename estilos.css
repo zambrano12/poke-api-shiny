@@ -1,7 +1,6 @@
-/* --- CONFIGURACIÓN GENERAL --- */
+/* --- ESTILOS GENERALES --- */
 body {
-    background-color: #24292e; /* Color oscuro del fondo de la web */
-    color: white;
+    background-color: #24292e; 
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 40px 20px;
@@ -12,9 +11,10 @@ header h1 {
     margin-bottom: 40px;
     font-size: 2.5rem;
     color: #f0f0f0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* --- GRID DE 4 COLUMNAS --- */
+/* --- CONTENEDOR DE TARJETAS --- */
 .characters-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
@@ -23,30 +23,29 @@ header h1 {
     margin: 0 auto;
 }
 
-/* --- TARJETA ESTÁTICA --- */
+/* --- TARJETA DE POKÉMON --- */
 .character-card {
     background-color: #333333;
     border-radius: 8px;
-    overflow: hidden; /* Esto hace que el zoom del personaje no se salga de la tarjeta */
+    overflow: hidden; 
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .character-card:hover {
     box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    transform: translateY(-5px);
 }
 
-/* --- CONTENEDOR DE IMAGEN Y PATRÓN --- */
+/* Contenedor de Imagen con el Patrón de Triángulos */
 .char-img-container {
     width: 100%;
-    height: 300px;
+    height: 250px;
     background-color: #ffffff;
-    overflow: hidden; /* Corta el crecimiento del personaje */
+    overflow: hidden;
     position: relative;
-    
-    /* Patrón de triángulos */
     background-image: linear-gradient(30deg, #f0f0f0 12%, transparent 12.5%, transparent 87%, #f0f0f0 87.5%, #f0f0f0),
                       linear-gradient(150deg, #f0f0f0 12%, transparent 12.5%, transparent 87%, #f0f0f0 87.5%, #f0f0f0),
                       linear-gradient(60deg, #e0e0e0 25%, transparent 25.5%, transparent 75%, #e0e0e0 75%, #e0e0e0);
@@ -58,16 +57,15 @@ header h1 {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    padding: 10px;
-    transition: transform 0.4s ease-in-out;
+    padding: 15px;
+    transition: transform 0.4s ease;
 }
 
-/* EFECTO: Al pasar el mouse por la tarjeta, escala solo la imagen */
 .character-card:hover .char-img {
-    transform: scale(1.18);
+    transform: scale(1.15);
 }
 
-/* --- INFO DE LA TARJETA --- */
+/* Información de la Tarjeta */
 .char-info {
     padding: 15px;
 }
@@ -76,41 +74,93 @@ header h1 {
     margin: 0;
     font-size: 1.3rem;
     color: #ffffff;
+    text-transform: capitalize;
 }
 
 .subtitle {
-    color: #e9c46a; /* Amarillo para la raza */
-    font-size: 0.9rem;
+    color: #e9c46a; 
+    font-size: 0.85rem;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: block;
+    text-transform: uppercase;
 }
 
-/* --- ESTADÍSTICAS --- */
+/* Estadísticas */
 .stats {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-}
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
+    gap: 6px;
 }
 
 .stat-item strong {
-    color: #ffffff;
-    font-size: 0.8rem;
+    color: #b0b0b0;
+    font-size: 0.75rem;
     font-weight: normal;
 }
 
 .stat-item span {
-    color: #e9c46a; /* Amarillo para los valores numéricos */
+    color: #e9c46a; 
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.95rem;
 }
 
-/* RESPONSIVE */
+/* --- EL BOTÓN "MÁS POKEMONES" (.btn-load) --- */
+.btn-load {
+    background: linear-gradient(180deg, #ffcb05 0%, #e9b904 100%);
+    color: #3b4cca;
+    border: 4px solid #3b4cca;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 0 #2a3a8c;
+    outline: none;
+}
+
+.btn-load:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #2a3a8c;
+    background: linear-gradient(180deg, #f7d54d 0%, #ffcb05 100%);
+}
+
+.btn-load:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 0 #2a3a8c;
+}
+
+/* Efecto de destello al pasar el mouse */
+.btn-load::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50px;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    transition: all 0.5s ease;
+}
+
+.btn-load:hover::after {
+    left: 150%;
+}
+
+/* Botón desactivado (mientras carga) */
+.btn-load:disabled {
+    background: #555;
+    border-color: #777;
+    color: #888;
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+/* --- RESPONSIVE --- */
 @media (max-width: 1024px) {
     .characters-container { grid-template-columns: repeat(2, 1fr); }
 }
